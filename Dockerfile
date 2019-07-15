@@ -10,4 +10,4 @@ WORKDIR /app
 
 # Install Pipfile contents system-wide
 ONBUILD COPY pyproject.toml pyproject.toml
-ONBUILD RUN poetry install && poetry cache:clear && rm pyproject.toml && rm poetry.lock
+ONBUILD RUN poetry install && poetry cache:clear --all -n && rm pyproject.toml && rm poetry.lock
