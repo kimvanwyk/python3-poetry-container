@@ -2,7 +2,7 @@ FROM python:3-stretch
 
 RUN pip install poetry
 
-RUN poetry config settings.virtualenvs.create false
+RUN poetry config virtualenvs.create false
 
 RUN mkdir /app
 
