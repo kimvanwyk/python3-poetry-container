@@ -13,10 +13,10 @@ before_script:
 build-master:
   stage: build
   script:
-    - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE" .
+    - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE:latest" .
     - export TAG=$(docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" cat /manifest.txt | awk NR==2)
-    - docker push "$CI_REGISTRY_IMAGE"
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$TAG"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+    - docker tag "$CI_REGISTRY_IMAGE:latest" "$CI_REGISTRY_IMAGE:$TAG"
     - docker push "$CI_REGISTRY_IMAGE:$TAG"
   only:
     - master
