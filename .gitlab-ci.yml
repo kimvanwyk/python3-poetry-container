@@ -7,19 +7,24 @@ services:
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  # fetches the latest image (not failing if image is not found)
+  - docker pull $CI_REGISTRY_IMAGE:latest || true
 
 build-master:
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE" .
+    - export TAG=$(docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" cat /manifest.txt | awk NR==2)
     - docker push "$CI_REGISTRY_IMAGE"
+    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$TAG"
+    - docker push "$CI_REGISTRY_IMAGE:$TAG"
   only:
     - master
 
 build:
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - no-push
@@ -28,6 +33,8 @@ build:
 build-no-push:
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - export TAG=$(docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" cat /manifest.txt | awk NR==2)
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" "$CI_REGISTRY_IMAGE:$TAG"
   only:
     - no-push
