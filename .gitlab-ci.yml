@@ -31,8 +31,8 @@ build-no-push:
   stage: build
   script:
     - docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-    - export TAG=$(docker run --rm registry.gitlab.com/kimvanwyk/python3-poetry-container:latest cat /manifest.txt | awk NR==2)
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$TAG"
+    - export TAG=$(docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" cat /manifest.txt | awk NR==2)
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" "$CI_REGISTRY_IMAGE:$TAG"
     - echo $TAG
   only:
     - no-push
