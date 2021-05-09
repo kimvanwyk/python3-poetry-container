@@ -34,5 +34,5 @@ ENTRYPOINT ["python", "main_script.py"]
 
 # Versions and Packages
 
-A manifest file detailing the Python, pip, and Poetry versions and the installed Python packages is in a file at **/manifest.txt**.
+A manifest file detailing the Python, pip, and Poetry versions and the installed Python packages is in a file inside the image at **/manifest.txt**.
 
