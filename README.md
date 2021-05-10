@@ -28,7 +28,7 @@ FROM python3-poetry-container:latest
 
 COPY app/* /app/
 
-ENTRYPOINT ["python", "main_script.py"]
+ENTRYPOINT ["python", "python_source.py"]
 
 ```
 
