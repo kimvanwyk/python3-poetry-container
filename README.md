@@ -36,3 +36,11 @@ ENTRYPOINT ["python", "main_script.py"]
 
 A manifest file detailing the Python, pip, and Poetry versions and the installed Python packages is in a file inside the image at **/manifest.txt**.
 
+# Development
+
+The source for this image is kept and developed in [this GitLab repository](https://gitlab.com/kimvanwyk/python3-poetry-container).
+
+# Licensing
+
+This image is licensed under the [BSD 3-Clause License](https://gitlab.com/kimvanwyk/python3-poetry-container/-/blob/d6104a25a33c7f3f584a09475ef1863a1224cf7c/LICENSE)
+
