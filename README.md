@@ -36,6 +36,10 @@ ENTRYPOINT ["python", "python_source.py"]
 
 A manifest file detailing the Python, pip, and Poetry versions and the installed Python packages is in a file inside the image at **/manifest.txt**.
 
+# Update Schedule
+
+This image is built and pushed to registries once a month, including the latest Python, pip and Poetry versions available at the time.
+
 # Development
 
 The source for this image is kept and developed in [this GitLab repository](https://gitlab.com/kimvanwyk/python3-poetry-container).
