@@ -48,3 +48,6 @@ The source for this image is kept and developed in [this GitLab repository](http
 
 This image is licensed under the [BSD 3-Clause License](https://gitlab.com/kimvanwyk/python3-poetry-container/-/blob/d6104a25a33c7f3f584a09475ef1863a1224cf7c/LICENSE)
 
+# Authors
+
+* [Kim van Wyk](https://gitlab.com/kimvanwyk)
