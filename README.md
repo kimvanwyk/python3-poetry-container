@@ -1,4 +1,4 @@
-# python3-poetry-container
+# python3-poetry
 A Docker container to be used as a base for Python 3 [poetry](https://poetry.eustace.io) based projects.
 
 # Usage
