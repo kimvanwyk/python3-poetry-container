@@ -42,11 +42,11 @@ This image is built and pushed to registries once a month, including the latest 
 
 # Development
 
-The source for this image is kept and developed in [this GitLab repository](https://gitlab.com/kimvanwyk/python3-poetry-container).
+The source for this image is kept and developed in [this GitLab repository](https://gitlab.com/kimvanwyk/python3-poetry).
 
 # Licensing
 
-This image is licensed under the [BSD 3-Clause License](https://gitlab.com/kimvanwyk/python3-poetry-container/-/blob/d6104a25a33c7f3f584a09475ef1863a1224cf7c/LICENSE)
+This image is licensed under the [BSD 3-Clause License](https://gitlab.com/kimvanwyk/python3-poetry/-/blob/d6104a25a33c7f3f584a09475ef1863a1224cf7c/LICENSE)
 
 # Authors
 
